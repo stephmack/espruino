@@ -1,3 +1,4 @@
+digitalPulse(26,1,[1000,1000,1000,1000,1000]);
 var t = setInterval(function () {
   // set up I2C
   var i2c = new I2C();
