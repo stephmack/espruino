@@ -3,7 +3,7 @@ var t = setInterval(function () {
   // set up I2C
   var i2c = new I2C();
   i2c.setup({ scl : D30, sda: D31 });
-  var acc = require("https://github.com/allmackey/espruino/blob/master/KX022.js").connectI2C(i2c);
+  var acc = require("https://github.com/stephmack/espruino/blob/master/KX022.js").connectI2C(i2c);
   //print(acc.read()); // prints { x: ..., y: ..., z: ... }
   var ic = 75;
   var i = 0;
@@ -36,7 +36,7 @@ var t = setInterval(function () {
   print(zL);
   print(zH);
   
-  var sht =  require("https://github.com/allmackey/espruino/blob/master/SHT3.js").connect(i2c,0x44);
+  var sht =  require("https://github.com/stephmack/espruino/blob/master/SHT3.js").connect(i2c,0x44);
   var tH = sht.readData().tH;
   var tL = sht.readData().tL;
   var hH = sht.readData().hH;
@@ -46,7 +46,7 @@ var t = setInterval(function () {
   print(hH);
   print(hL);
   
-  require("https://github.com/allmackey/espruino/blob/master/BrewBeacon.js").advertise({
+  require("https://github.com/stephmack/espruino/blob/master/BrewBeacon.js").advertise({
     uuid : [0, 0, 0, 0, 0, 0, tH, tL, hH, hL, xL, xH, yL, yH, zL, zH], // ibeacon uuid
     major : batt, // optional
     minor : 0x0001, // optional
