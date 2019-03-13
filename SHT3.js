@@ -48,5 +48,6 @@ SHT2x.prototype.readData = function() {
     hL: d.getInt8(4,1),
     tfV: -49.0 + 315.0 / 65535.0 * t,
     hfV: 100.0 / 65535.0 * h
+    print(tfV);
   };
 };
