@@ -43,7 +43,11 @@ LIS2MDL.prototype.init = function() {
   this.w(REG.CNTL1, 0x10); //config 0 0 0 1 0 0 0 0 NEW
   this.w(REG.LP_CNTL, 0x0B); //NEW
   this.w(REG.CNTL1, 0x90); //NEW config 10010000
-  print("config 2");
+  var res = new DataView(this.r(REG.CNTL1,1).buffer);
+  return {
+    rslt:  res.getInt8(0,1)
+  };
+  print(res.rslt);
 };
 
 //tt
