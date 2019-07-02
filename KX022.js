@@ -28,11 +28,12 @@ function LIS2MDL(options,r,w) {
   if (this.r(REG.WHO_AM_I,1)[0]!=20) throw new Error("WHO_AM_I incorrect");
   //this.w(REG.CNTL1, 0x50); //config 0 1 0 1 0 0 0 0 OLD
   this.w(REG.CNTL1, 0x10); //config 0 0 0 1 0 0 0 0 NEW
+  var res = new DataView(this.r(REG.CNTL1,1).buffer);
+  print(res.getInt8(0,1));
   //this.w(REG.CNTL1, 0xD0); //OLD
   this.w(REG.LP_CNTL, 0x0B); //NEW
   this.w(REG.CNTL1, 0x90); //NEW config 10010000
-  print("config 1");
-  var res = new DataView(this.r(REG.CNTL1,1).buffer);
+  res = new DataView(this.r(REG.CNTL1,1).buffer);
   print(res.getInt8(0,1));
   // low pass filter, ODR/4
   //this.w(REG.CFG_B, 0x01);
@@ -49,7 +50,7 @@ LIS2MDL.prototype.init = function() {
   return {
     rslt:  res.getInt8(0,1)
   };
-  print(res.rslt);
+  //print(res.rslt);
 };
 
 //tt
