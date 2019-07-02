@@ -31,6 +31,7 @@ function LIS2MDL(options,r,w) {
   //this.w(REG.CNTL1, 0xD0); //OLD
   this.w(REG.LP_CNTL, 0x0B); //NEW
   this.w(REG.CNTL1, 0x90); //NEW config 10010000
+  print("config 1");
   // low pass filter, ODR/4
   //this.w(REG.CFG_B, 0x01);
   // data ready irq, block data read
@@ -42,6 +43,7 @@ LIS2MDL.prototype.init = function() {
   this.w(REG.CNTL1, 0x10); //config 0 0 0 1 0 0 0 0 NEW
   this.w(REG.LP_CNTL, 0x0B); //NEW
   this.w(REG.CNTL1, 0x90); //NEW config 10010000
+  print("config 2");
 };
 
 //tt
