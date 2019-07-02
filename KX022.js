@@ -28,8 +28,10 @@ function LIS2MDL(options,r,w) {
   if (this.r(REG.WHO_AM_I,1)[0]!=20) throw new Error("WHO_AM_I incorrect");
   //this.w(REG.CNTL1, 0x50); //config 0 1 0 1 0 0 0 0 OLD
   print("setting changes made");
-  this.w(REG.CNTL1, 0x10); //config 0 0 0 1 0 0 0 0 NEW
   var res = new DataView(this.r(REG.CNTL1,1).buffer);
+  print(res.getInt8(0,1));
+  this.w(REG.CNTL1, 0x10); //config 0 0 0 1 0 0 0 0 NEW
+  res = new DataView(this.r(REG.CNTL1,1).buffer);
   print(res.getInt8(0,1));
   //this.w(REG.CNTL1, 0xD0); //OLD
   this.w(REG.LP_CNTL, 0x00); //NEW
