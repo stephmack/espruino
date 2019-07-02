@@ -29,17 +29,17 @@ function LIS2MDL(options,r,w) {
   //this.w(REG.CNTL1, 0x50); //config 0 1 0 1 0 0 0 0 OLD
   print("setting changes made");
   var res = new DataView(this.r(REG.CNTL1,1).buffer);
-  print(res.getInt8(0,1));
+  print(res.getUint8(0,1));
   this.w(REG.CNTL1, 0x10); //config 0 0 0 1 0 0 0 0 NEW
   res = new DataView(this.r(REG.CNTL1,1).buffer);
-  print(res.getInt8(0,1));
+  print(res.getUint8(0,1));
   //this.w(REG.CNTL1, 0xD0); //OLD
   this.w(REG.LP_CNTL, 0x00); //NEW
   res = new DataView(this.r(REG.CNTL1,1).buffer);
-  print(res.getInt8(0,1));
-  this.w(REG.CNTL1, 0x80); //NEW config 10010000
+  print(res.getUint8(0,1));
+  this.w(REG.CNTL1, 0x90); //NEW config 10010000
   res = new DataView(this.r(REG.CNTL1,1).buffer);
-  print(res.getInt8(0,1));
+  print(res.getUint8(0,1));
   // low pass filter, ODR/4
   //this.w(REG.CFG_B, 0x01);
   // data ready irq, block data read
